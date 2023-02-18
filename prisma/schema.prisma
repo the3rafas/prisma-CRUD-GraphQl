@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator nestgraphql {
+    provider = "node node_modules/prisma-nestjs-graphql"
+    // for yarn monorepos
+
+    fields_Validator_from = "class-validator"
+    fields_Validator_input = true
+
+    // provider = "prisma-nestjs-graphql"
+    output = "../src/@generated/prisma-nestjs-graphql"
+}
+
+
+model Auther {
+      
+  id    String     @id @default(uuid())
+   /// @Validator.IsString()
+   /// @Validator.IsNotEmpty()
+
+  name  String?
+  posts Book[]
+}
+
+
+
+model Book {
+  id        String      @default(uuid()) @id
+   /// @Validator.IsString()
+   /// @Validator.IsNotEmpty()
+
+  title     String
+
+   /// @Validator.IsString()
+   /// @Validator.IsNotEmpty()
+
+  content   String?
+  published Boolean? @default(false)
+  author    Auther?    @relation(fields: [authorId], references: [id])
+  authorId  String?
+}
