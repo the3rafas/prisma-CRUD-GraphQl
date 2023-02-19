@@ -3,11 +3,13 @@
 
 generator client {
   provider = "prisma-client-js"
+  //  binaryTargets = ["native", "windows"]
+   binaryTargets = [ "native",  "debian-openssl-1.1.x", "debian-openssl-3.0.x",  "linux-musl", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://postgres:admin@db:5432/try-prisma?schema=public"
 }
 
 generator nestgraphql {
@@ -19,15 +21,14 @@ generator nestgraphql {
 
     // provider = "prisma-nestjs-graphql"
     output = "../src/@generated/prisma-nestjs-graphql"
-}
+} 
 
 
 model Auther {
-      
   id    String     @id @default(uuid())
+
    /// @Validator.IsString()
    /// @Validator.IsNotEmpty()
-
   name  String?
   posts Book[]
 }
@@ -38,12 +39,10 @@ model Book {
   id        String      @default(uuid()) @id
    /// @Validator.IsString()
    /// @Validator.IsNotEmpty()
-
   title     String
 
    /// @Validator.IsString()
    /// @Validator.IsNotEmpty()
-
   content   String?
   published Boolean? @default(false)
   author    Auther?    @relation(fields: [authorId], references: [id])

@@ -5,19 +5,23 @@ import { AutherCreateNestedOneWithoutPostsInput } from '../auther/auther-create-
 
 @InputType()
 export class BookCreateInput {
-  @Field(() => String, { nullable: false })
-  @Validator.IsString()
-  @Validator.IsNotEmpty()
-  title!: string;
 
-  @Field(() => String, { nullable: false })
-  @Validator.IsString()
-  @Validator.IsNotEmpty()
-  content: string;
+    @Field(() => String, {nullable:true})
+    id?: string;
 
-  @Field(() => Boolean, { nullable: true })
-  published?: boolean;
+    @Field(() => String, {nullable:false})
+    @Validator.IsString()
+    @Validator.IsNotEmpty()
+    title!: string;
 
-  @Field(() => String, { nullable: false })
-  authorId: string;
+    @Field(() => String, {nullable:true})
+    @Validator.IsString()
+    @Validator.IsNotEmpty()
+    content?: string;
+
+    @Field(() => Boolean, {nullable:true})
+    published?: boolean;
+
+    @Field(() => AutherCreateNestedOneWithoutPostsInput, {nullable:true})
+    author?: AutherCreateNestedOneWithoutPostsInput;
 }
