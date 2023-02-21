@@ -19,4 +19,7 @@ export class BookCountOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     authorId?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    delete?: keyof typeof SortOrder;
 }

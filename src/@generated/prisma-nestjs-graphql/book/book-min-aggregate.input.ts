@@ -18,4 +18,7 @@ export class BookMinAggregateInput {
 
     @Field(() => Boolean, {nullable:true})
     authorId?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    delete?: true;
 }

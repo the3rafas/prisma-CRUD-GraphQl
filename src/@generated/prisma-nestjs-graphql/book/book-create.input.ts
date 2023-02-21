@@ -1,27 +1,18 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import * as Validator from 'class-validator';
 import { AutherCreateNestedOneWithoutPostsInput } from '../auther/auther-create-nested-one-without-posts.input';
 
 @InputType()
 export class BookCreateInput {
+  @Field(() => String, { nullable: false })
+  title!: string;
 
-    @Field(() => String, {nullable:true})
-    id?: string;
+  @Field(() => String, { nullable: false })
+  content!: string;
 
-    @Field(() => String, {nullable:false})
-    @Validator.IsString()
-    @Validator.IsNotEmpty()
-    title!: string;
+  @Field(() => Boolean, { nullable: true })
+  published?: boolean;
 
-    @Field(() => String, {nullable:true})
-    @Validator.IsString()
-    @Validator.IsNotEmpty()
-    content?: string;
-
-    @Field(() => Boolean, {nullable:true})
-    published?: boolean;
-
-    @Field(() => AutherCreateNestedOneWithoutPostsInput, {nullable:true})
-    author?: AutherCreateNestedOneWithoutPostsInput;
+  @Field(() => String, { nullable: false })
+  authorId!: string;
 }

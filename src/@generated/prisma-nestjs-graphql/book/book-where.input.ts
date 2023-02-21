@@ -4,6 +4,8 @@ import { StringFilter } from '../prisma/string-filter.input';
 import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
 import { BoolNullableFilter } from '../prisma/bool-nullable-filter.input';
 import { AutherRelationFilter } from '../auther/auther-relation-filter.input';
+import { BoolFilter } from '../prisma/bool-filter.input';
+import { Type } from 'class-transformer';
 
 @InputType()
 export class BookWhereInput {
@@ -34,4 +36,8 @@ export class BookWhereInput {
 
     @Field(() => StringNullableFilter, {nullable:true})
     authorId?: StringNullableFilter;
+
+    @Field(() => BoolFilter, {nullable:true})
+    @Type(() => BoolFilter)
+    delete?: BoolFilter;
 }

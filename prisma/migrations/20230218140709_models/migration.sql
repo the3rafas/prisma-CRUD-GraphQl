@@ -13,6 +13,8 @@ CREATE TABLE "Book" (
     "content" TEXT,
     "published" BOOLEAN DEFAULT false,
     "authorId" TEXT,
+    "delete" BOOLEAN DEFAULT false,
+
 
     CONSTRAINT "Book_pkey" PRIMARY KEY ("id")
 );

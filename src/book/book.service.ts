@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'prisma/prisma.service';
+import { PrismaService } from 'nestjs-prisma';
 import { BookCreateInput } from 'src/@generated/prisma-nestjs-graphql/book/book-create.input';
 import { BookUpdateWithoutAuthorInput } from 'src/@generated/prisma-nestjs-graphql/book/book-update-without-author.input';
 import { BookWhereUniqueInput } from 'src/@generated/prisma-nestjs-graphql/book/book-where-unique.input';

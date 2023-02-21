@@ -2,6 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { ID } from '@nestjs/graphql';
 import { Auther } from '../auther/auther.model';
+import { HideField } from '@nestjs/graphql';
 
 @ObjectType()
 export class Book {
@@ -23,4 +24,7 @@ export class Book {
 
     @Field(() => String, {nullable:true})
     authorId!: string | null;
+
+    @HideField()
+    delete!: boolean;
 }

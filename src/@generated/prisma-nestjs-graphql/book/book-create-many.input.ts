@@ -1,6 +1,5 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import * as Validator from 'class-validator';
 
 @InputType()
 export class BookCreateManyInput {
@@ -9,13 +8,9 @@ export class BookCreateManyInput {
     id?: string;
 
     @Field(() => String, {nullable:false})
-    @Validator.IsString()
-    @Validator.IsNotEmpty()
     title!: string;
 
     @Field(() => String, {nullable:true})
-    @Validator.IsString()
-    @Validator.IsNotEmpty()
     content?: string;
 
     @Field(() => Boolean, {nullable:true})
@@ -23,4 +18,7 @@ export class BookCreateManyInput {
 
     @Field(() => String, {nullable:true})
     authorId?: string;
+
+    @Field(() => Boolean, {nullable:true})
+    delete?: boolean;
 }

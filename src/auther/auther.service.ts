@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'prisma/prisma.service';
 import { AutherCreateInput } from 'src/@generated/prisma-nestjs-graphql/auther/auther-create.input';
 import { AutherUpdateWithoutPostsInput } from 'src/@generated/prisma-nestjs-graphql/auther/auther-update-without-posts.input';
 import { AutherWhereUniqueInput } from 'src/@generated/prisma-nestjs-graphql/auther/auther-where-unique.input';
-
+import { PrismaService } from 'nestjs-prisma';
 @Injectable()
 export class AutherService {
   constructor(private prisma: PrismaService) {}
@@ -42,6 +41,13 @@ export class AutherService {
   async remove(where: AutherWhereUniqueInput) {
     return await this.prisma.auther.delete({
       where: where,
+      include:{
+        posts:{
+          
+        }
+      }
     });
   }
+
+  
 }

@@ -6,8 +6,14 @@ RUN echo $DATABASE_URL
 # Create app directory
 WORKDIR /app
 
+
+# RUN npx prismix
+
 # Install prisma for the migration
 RUN npm install -g prisma --unsafe-perm
+RUN npm install nestjs-prisma
+
+# RUN prisma migrate dev --schema=prisma/schema.prisma
 
 # Copy schema and migration folder
 ADD ./ ./prisma/

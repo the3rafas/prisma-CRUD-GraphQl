@@ -1,0 +1,7 @@
+model Auther {
+  id    String     @id @default(uuid())
+
+   /// @Validator.IsString()
+   /// @Validator.IsNotEmpty()
+  name  String?
+}

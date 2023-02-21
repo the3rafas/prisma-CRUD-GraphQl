@@ -23,6 +23,9 @@ export class BookOrderByWithAggregationInput {
     @Field(() => SortOrder, {nullable:true})
     authorId?: keyof typeof SortOrder;
 
+    @Field(() => SortOrder, {nullable:true})
+    delete?: keyof typeof SortOrder;
+
     @Field(() => BookCountOrderByAggregateInput, {nullable:true})
     _count?: BookCountOrderByAggregateInput;
 

@@ -20,5 +20,8 @@ export class BookCountAggregateInput {
     authorId?: true;
 
     @Field(() => Boolean, {nullable:true})
+    delete?: true;
+
+    @Field(() => Boolean, {nullable:true})
     _all?: true;
 }

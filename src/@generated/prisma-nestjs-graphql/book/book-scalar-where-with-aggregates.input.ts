@@ -3,6 +3,8 @@ import { InputType } from '@nestjs/graphql';
 import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-filter.input';
 import { StringNullableWithAggregatesFilter } from '../prisma/string-nullable-with-aggregates-filter.input';
 import { BoolNullableWithAggregatesFilter } from '../prisma/bool-nullable-with-aggregates-filter.input';
+import { BoolWithAggregatesFilter } from '../prisma/bool-with-aggregates-filter.input';
+import { Type } from 'class-transformer';
 
 @InputType()
 export class BookScalarWhereWithAggregatesInput {
@@ -30,4 +32,8 @@ export class BookScalarWhereWithAggregatesInput {
 
     @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
     authorId?: StringNullableWithAggregatesFilter;
+
+    @Field(() => BoolWithAggregatesFilter, {nullable:true})
+    @Type(() => BoolWithAggregatesFilter)
+    delete?: BoolWithAggregatesFilter;
 }

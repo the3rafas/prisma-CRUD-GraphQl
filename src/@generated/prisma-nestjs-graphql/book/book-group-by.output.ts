@@ -1,5 +1,6 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
+import { HideField } from '@nestjs/graphql';
 import { BookCountAggregate } from './book-count-aggregate.output';
 import { BookMinAggregate } from './book-min-aggregate.output';
 import { BookMaxAggregate } from './book-max-aggregate.output';
@@ -21,6 +22,9 @@ export class BookGroupBy {
 
     @Field(() => String, {nullable:true})
     authorId?: string;
+
+    @HideField()
+    delete!: boolean;
 
     @Field(() => BookCountAggregate, {nullable:true})
     _count?: BookCountAggregate;

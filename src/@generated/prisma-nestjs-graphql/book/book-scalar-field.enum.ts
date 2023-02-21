@@ -5,7 +5,8 @@ export enum BookScalarFieldEnum {
     title = "title",
     content = "content",
     published = "published",
-    authorId = "authorId"
+    authorId = "authorId",
+    'delete' = "delete"
 }
 
 
