@@ -31,6 +31,10 @@
 ```bash
 $ npm install
 ```
+## Before run the docker command  make suer u run prismix to initiate your "schemas" in  "schema.prisma" file 
+```bash
+$ npx prismix
+```
 
 ## Running the app
 
